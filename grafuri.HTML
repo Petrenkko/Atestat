@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-4.5.3-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="STYLE/stil.css"/>
+    <link rel="stylesheet" href="STYLE/vizualizare_stil.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+    <script src="ajax.js"></script>
+    <script src = "bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+    <title>ATESTAT GRAFURI</title>
+</head>
+<body>
+    <!--  HERO IMAGE-->
+    <div class="hero-image">
+        <div class="hero-text fonttext">
+            <div>Drumuri minime in grafuri</div>
+        </div>
+    </div>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg Gri1 navbar-dark sticky-top fonttext">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class=" nav-item">
+            <a class="nav-link" href="home.HTML">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="grafuri.HTML">Grafuri si drumuri</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="vizualizare.HTML">Vizualizare</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Probleme
+              </a>
+              <div class="dropdown-menu Gri3" id = "drop">
+                <a class="dropdown-item" href="pb1.HTML">Problema Catun</a>
+                <a class="dropdown-item" href="pb2.HTML">Problema Lanterna</a>
+                <a class="dropdown-item" href="pb3.HTML">Problema Dragoni</a>
+              </div>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="info.html">Info</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Continut -->
+    <div class = "row fonttext TextGri">
+            <div class="col-md-2">
+            </div>
+        <div class="col-md-8 spatiu Gri2">
+            <div>
+                <div class="centru Text_Title">
+                  Ce sunt grafurile? 
+                </div>
+                <div class = "Text_Int">
+                  Definiţie : Se numeşte graf G= (X ,U), unde X={x1, x2, x3,…, xi,…, xn},  X≠∅,  este multimea de vârfuri sau noduri, iar U={u1, u2, u3,…, uk,…, um}, este multimea de muchii (arce).
+                  <br>
+                  Acestea pot fi orientate sau neorientate, orientarea acestora constând în existarea unui sens în care este parcursă o muchie. <br>
+                </div>
+              <div class="mijloc row ">
+                    <div class="col-md-2">
+                    </div>
+
+                    <div class="col-md-4">
+                      <img src="STYLE/grf_neo.png" alt="Graf Neorientat" class = "responsive" width="300" height="200">
+                      Graf Neorientat
+                    </div>
+
+                    <div class="col-md-4 ">
+                      <img src="STYLE/grf_or.png" alt="Graf Orientat" class = "responsive" width="300" height="200">
+                      Graf Orientat
+                    </div>
+
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                
+                <div class = "Text_Int">
+                  Pe scurt un graf constă într-o mulțime de noduri și muchii, fiecare dintre acestea din urmă făcând legătura între două noduri(sau legând un nod cu el însuși
+                  formând o buclă).
+                </div>
+                <div class = "centru Text_Title">
+                Grafuri cu costuri
+                </div>
+                <div class = "Text_Int">
+                De asemenea, muchiilor le putem atribui costuri, astfel pentru a parcurge muchia respectivă trebuie "plătit" costul respectiv.
+                </div>
+                <div class = "Text_Int">
+                  Deci, având posibilitatea de a ajunge în nodul B din nodul A prin mai multe drumuri distincte,
+                  se pune problema găsirii celui mai rapid drum(cel având costul cel mai mic).  
+                </div>
+                <div class = "Text_Int">
+                  Pentru aceasta se pot folosi mai multe metode care for fi prezentate în ordinea complexității:
+                  </div>
+                
+                  <div class = "centru Text_Title">
+                    Metoda 1: Backtracking
+                  </div>
+                  <div class = "Text_Int">
+                      Această metodă presupune generarea tuturor drumurilor de la nodul A la B,
+                      iar dintre acestea se alege drumul care are cel mai mic cost.
+                  </div>
+                  <div class = "Text_Int">
+                    Metoda este una ineficientă deoarece în funcție de graf poate atinge complexități exponențiale sau chiar de ordinul factorialului.
+                  </div>
+                  <button type="button" class="butoane" data-toggle="modal" data-target="#BKT">
+                    Cod sursă
+                  </button>
+
+                  <div class = "centru Text_Title">
+                    Metoda 2: Algoritmul lui Roy-Floyd - O(n^3)
+                  </div>
+                  <div class = "Text_Int">
+                    Algoritmul presupune calcularea distanțelor între toate nodurile astfel și dintanța între A și B.
+                  </div>
+                  <div class = "Text_Int">
+                    Calculul distanțelor se realizează verificând dacă pentru două noduri X și Z dacă există un nod Y pentru
+                    care distanța X -> Y -> Z este mai mică decât distanța X -> Z. Asfel se optimizează toate distanțele și în final
+                    vom avea distanța minimă de la A la B.
+                  </div>
+                  
+                  <button type="button" class="butoane" data-toggle="modal" data-target="#roy">
+                    Cod sursă
+                  </button>
+
+
+                  <div class = "centru Text_Title">
+                    Metoda 3: Algoritmul lui Dijkstra - O(n^2)
+                  </div>
+                  <div class = "Text_Int">
+                    Acest algoritm se bazează pe principiul minimalității specific programării dinamice și calculează
+                    doar distanțele minime dintr-o sursă unică.
+                    Se rețin distanțele de la nodul sursă la celelalte. Inițial aceste vor fi infinit deoarece nu le-am parcurs încă
+                    iar distanța de la sursă la ea însăși este 0.
+                  </div>
+                  <div class = "Text_Int">
+                    La fiecare pas se caută un nod care nu a mai fost parcurs și care are cea mai mică distanță diferită de infinit
+                    După ce am ales un nod actualizăm distanța tuturor vecinilor săi(proces numit relaxarea muchiilor). Astfel, pentru fiecare nod parcurs
+                    știm că în momentul parcurgerii distanța minimă până în acel nod este optimă, așadar vom căuta să-i optimizăm vecinii.
+                  </div>
+                  <button type="button" class="butoane" data-toggle="modal" data-target="#dijp">
+                    Cod sursă
+                  </button>
+
+                  <div class = "centru Text_Title">
+                    Metoda 4: Algoritmul lui Dijkstra - O(n log n)
+                  </div>
+                  <div class = "Text_Int">
+                    Ideea acestui algoritm este aceeași cu varianta în n^2 doar că găsirea nodului neparcurs cu
+                    cel mai scurt drum de la sursă se face cu ajutorul unui min heap(o structură de date arborescentă care determină
+                    minimul dintre elementele structurii în O(1) și care efectuează operațiile de actualizare în O(log n); în c++ 
+                    sunt prezente în librăria STL structurile set și priorityqueue).
+                  </div>
+                  <button type="button" class="butoane" data-toggle="modal" data-target="#dij">
+                    Cod sursă
+                  </button>
+
+                  <div class = "centru Text_Title">
+                    Metoda 5: Algoritmul Bellman-Ford - O(n^2)
+                  </div>
+                  <div class = "Text_Int">
+                    Acest algoritm se bazează tot pe procedeul relaxării muchiilor doar că acesta nu se bazează pe o 
+                    strategie greedy căutând nodul cu cost minim ci aplică acest procedeu tuturor muchiilor.
+                  </div>
+                  <div class = "Text_Int">
+                    Deci, spre deosebire de algoritmul lui Dijkstra acesta poate procesa muchii cu costuri negative, spre deosebire de Metoda 3 și 4
+                    unde existența unui ciclu negativ duce la ciclarea algorimului găsindu-se mereu un cost mai mic.
+                  </div>
+                  
+                  <div class = "Text_Int">
+                    Astfel, algoritmul Bellman-Ford poate identifica ciclurile negative, iar în ciuda complexității aparente n^2, acesta se comportă mai bine în practică.
+                  </div>
+                  <button type="button" class="butoane" data-toggle="modal" data-target="#BF">
+                    Cod sursă
+                  </button>
+              </div>
+         </div>
+              <div class="col-md-2"> 
+              </div>
+      </div>
+
+       <!-- FOOTER-->
+      <div class="row footer Gri1 TextGri fonttext ">
+        <div class="Gri1 mijloc col-md-12">
+          <p class=" Gri1 text_footer">
+            &#169; Copyright Petru-Gabriel Vamanu
+            <span></span>
+          </p>
+        </div>
+      </div>
+
+      <!--  Modal ROY FLOYD   -->
+      <div class="modal fade bd-example-modal-sm" id="roy" tabindex="-1" role="dialog" aria-labelledby="roy" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Algoritm Roy-Floyd</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+<pre class="cpp" style="font-family:monospace;"><span style="color: #339900;">#include &lt;fstream&gt;</span>
+<span style="color: #339900;">#define NMAX 101</span>
+&nbsp;
+<span style="color: #0000ff;">using</span> <span style="color: #0000ff;">namespace</span> std<span style="color: #008080;">;</span>
+ifstream f<span style="color: #008000;">&#40;</span><span style="color: #FF0000;">&quot;royfloyd.in&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+ofstream g<span style="color: #008000;">&#40;</span><span style="color: #FF0000;">&quot;royfloyd.out&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+<span style="color: #0000ff;">int</span> a<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span>, n<span style="color: #008080;">;</span>
+<span style="color: #0000ff;">void</span> RF<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+  <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> k <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> k <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>k<span style="color: #008000;">&#41;</span>
+      <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+          <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> j <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> j <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>j<span style="color: #008000;">&#41;</span>
+              <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>a<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>k<span style="color: #008000;">&#93;</span> <span style="color: #000040;">&amp;&amp;</span> a<span style="color: #008000;">&#91;</span>k<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>j<span style="color: #008000;">&#93;</span> <span style="color: #000040;">&amp;&amp;</span> <span style="color: #008000;">&#40;</span><span style="color: #000040;">!</span>a<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>j<span style="color: #008000;">&#93;</span> <span style="color: #000040;">||</span> a<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>j<span style="color: #008000;">&#93;</span> <span style="color: #000080;">&gt;</span> a<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>k<span style="color: #008000;">&#93;</span> <span style="color: #000040;">+</span> a<span style="color: #008000;">&#91;</span>k<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>j<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span> <span style="color: #000040;">&amp;&amp;</span> i <span style="color: #000040;">!</span><span style="color: #000080;">=</span> j<span style="color: #008000;">&#41;</span>
+                  a<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>j<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> a<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>k<span style="color: #008000;">&#93;</span> <span style="color: #000040;">+</span> a<span style="color: #008000;">&#91;</span>k<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>j<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+<span style="color: #008000;">&#125;</span>
+<span style="color: #0000ff;">int</span> main<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+  f <span style="color: #000080;">&gt;&gt;</span> n<span style="color: #008080;">;</span>
+  <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+      <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> j <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> j <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>j<span style="color: #008000;">&#41;</span>
+          f <span style="color: #000080;">&gt;&gt;</span> a<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>j<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+&nbsp;
+  RF<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+&nbsp;
+  <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i, g <span style="color: #000080;">&lt;&lt;</span> <span style="color: #FF0000;">'<span style="color: #000099; font-weight: bold;">\n</span>'</span><span style="color: #008000;">&#41;</span>
+      <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> j <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> j <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>j<span style="color: #008000;">&#41;</span>
+          g <span style="color: #000080;">&lt;&lt;</span> a<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>j<span style="color: #008000;">&#93;</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #FF0000;">' '</span><span style="color: #008080;">;</span>
+  f.<span style="color: #007788;">close</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+  g.<span style="color: #007788;">close</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+  <span style="color: #0000ff;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+<span style="color: #008000;">&#125;</span></pre>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="butoane" style = "background-color :  #A4A5A6;" data-dismiss="modal">Close</button>
+              <!--
+                <button class = "butoane" id="edge-update"  data-dismiss="modal" onclick="updateEdge();">Update</button>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+
+      <!--  Modal Dijkstra logn   -->
+      <div class="modal fade bd-example-modal-sm" id="dij" tabindex="-1" role="dialog" aria-labelledby="dij" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Algoritm Dijkstra O(nlogn)</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+<pre class="cpp" style="font-family:monospace;"><span style="color: #339900;">#include &lt;bits/stdc++.h&gt;</span>
+<span style="color: #339900;">#define NMAX 50010</span>
+<span style="color: #339900;">#define inf 2047483646</span>
+<span style="color: #0000ff;">using</span> <span style="color: #0000ff;">namespace</span> std<span style="color: #008080;">;</span>
+&nbsp;
+ifstream f<span style="color: #008000;">&#40;</span><span style="color: #FF0000;">&quot;dijkstra.in&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+ofstream g<span style="color: #008000;">&#40;</span><span style="color: #FF0000;">&quot;dijkstra.out&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+<span style="color: #0000ff;">int</span> n, m,x,y,wh, dist<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+vector <span style="color: #000080;">&lt;</span> pair<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">int</span>,<span style="color: #0000ff;">int</span><span style="color: #000080;">&gt;</span> <span style="color: #000080;">&gt;</span> G<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+bitset<span style="color: #000080;">&lt;</span>NMAX<span style="color: #000080;">&gt;</span> viz<span style="color: #008080;">;</span>
+<span style="color: #0000ff;">void</span> DJ<span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> start<span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+        dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> inf<span style="color: #008080;">;</span>
+    dist<span style="color: #008000;">&#91;</span>start<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+    set <span style="color: #000080;">&lt;</span>pair <span style="color: #000080;">&lt;</span><span style="color: #0000ff;">int</span>,<span style="color: #0000ff;">int</span><span style="color: #000080;">&gt;</span> <span style="color: #000080;">&gt;</span> Q<span style="color: #008080;">;</span>
+    Q.<span style="color: #007788;">insert</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#123;</span><span style="color: #0000dd;">0</span>,start<span style="color: #008000;">&#125;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">while</span><span style="color: #008000;">&#40;</span><span style="color: #000040;">!</span>Q.<span style="color: #007788;">empty</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        <span style="color: #0000ff;">int</span> nod <span style="color: #000080;">=</span> <span style="color: #008000;">&#40;</span><span style="color: #000040;">*</span>Q.<span style="color: #007788;">begin</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span>.<span style="color: #007788;">second</span><span style="color: #008080;">;</span>
+        Q.<span style="color: #007788;">erase</span><span style="color: #008000;">&#40;</span>Q.<span style="color: #007788;">begin</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+        <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>viz<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+            <span style="color: #0000ff;">continue</span><span style="color: #008080;">;</span>
+        viz<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span>
+        <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">auto</span> it <span style="color: #008080;">:</span> G<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+        <span style="color: #008000;">&#123;</span>
+            <span style="color: #0000ff;">int</span> next <span style="color: #000080;">=</span> it.<span style="color: #007788;">first</span><span style="color: #008080;">;</span>
+            <span style="color: #0000ff;">int</span> cost <span style="color: #000080;">=</span> it.<span style="color: #007788;">second</span><span style="color: #008080;">;</span>
+            <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>dist<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span> <span style="color: #000040;">+</span> cost <span style="color: #000080;">&lt;</span> dist<span style="color: #008000;">&#91;</span>next<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+            <span style="color: #008000;">&#123;</span>
+                dist<span style="color: #008000;">&#91;</span>next<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> dist<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span> <span style="color: #000040;">+</span> cost<span style="color: #008080;">;</span>
+                Q.<span style="color: #007788;">insert</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#123;</span>dist<span style="color: #008000;">&#91;</span>next<span style="color: #008000;">&#93;</span>,next<span style="color: #008000;">&#125;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+            <span style="color: #008000;">&#125;</span>
+        <span style="color: #008000;">&#125;</span>
+    <span style="color: #008000;">&#125;</span>
+<span style="color: #008000;">&#125;</span>
+&nbsp;
+<span style="color: #0000ff;">int</span> main<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+    f <span style="color: #000080;">&gt;&gt;</span> n <span style="color: #000080;">&gt;&gt;</span> m<span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> m<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        f <span style="color: #000080;">&gt;&gt;</span> x <span style="color: #000080;">&gt;&gt;</span> y <span style="color: #000080;">&gt;&gt;</span> wh<span style="color: #008080;">;</span>
+        G<span style="color: #008000;">&#91;</span>x<span style="color: #008000;">&#93;</span>.<span style="color: #007788;">push_back</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#123;</span>y,wh<span style="color: #008000;">&#125;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #008000;">&#125;</span>
+    DJ<span style="color: #008000;">&#40;</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">2</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+        <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">==</span> inf<span style="color: #008000;">&#41;</span>
+            g <span style="color: #000080;">&lt;&lt;</span> <span style="color: #0000dd;">0</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #FF0000;">' '</span><span style="color: #008080;">;</span>
+        <span style="color: #0000ff;">else</span>
+            g <span style="color: #000080;">&lt;&lt;</span> dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #FF0000;">' '</span><span style="color: #008080;">;</span>
+    f.<span style="color: #007788;">close</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    g.<span style="color: #007788;">close</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+<span style="color: #008000;">&#125;</span></pre>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="butoane" style = "background-color :  #A4A5A6;" data-dismiss="modal">Close</button>
+              <!--
+                <button class = "butoane" id="edge-update"  data-dismiss="modal" onclick="updateEdge();">Update</button>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+       <!--  Modal Dijkstra n^2  -->
+       <div class="modal fade bd-example-modal-sm" id="dijp" tabindex="-1" role="dialog" aria-labelledby="dijp" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Algoritm Dijkstra O(n^2)</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+<pre class="cpp" style="font-family:monospace;"><span style="color: #339900;">#include &lt;fstream&gt;</span>
+<span style="color: #339900;">#include &lt;set&gt;</span>
+<span style="color: #339900;">#include &lt;vector&gt;</span>
+<span style="color: #339900;">#include &lt;bitset&gt;</span>
+<span style="color: #339900;">#define NMAX 50010</span>
+<span style="color: #339900;">#define inf 2047483646</span>
+<span style="color: #0000ff;">using</span> <span style="color: #0000ff;">namespace</span> std<span style="color: #008080;">;</span>
+&nbsp;
+ifstream f<span style="color: #008000;">&#40;</span><span style="color: #FF0000;">&quot;dijkstra.in&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+ofstream g<span style="color: #008000;">&#40;</span><span style="color: #FF0000;">&quot;dijkstra.out&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+<span style="color: #0000ff;">int</span> n, m,x,y,wh, dist<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+vector <span style="color: #000080;">&lt;</span> pair<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">int</span>,<span style="color: #0000ff;">int</span><span style="color: #000080;">&gt;</span> <span style="color: #000080;">&gt;</span> v<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+bitset <span style="color: #000080;">&lt;</span>NMAX<span style="color: #000080;">&gt;</span> viz<span style="color: #008080;">;</span>
+&nbsp;
+<span style="color: #0000ff;">void</span> DJ<span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> start<span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+    <span style="color: #0000ff;">int</span> act <span style="color: #000080;">=</span> start<span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+        dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> inf<span style="color: #008080;">;</span>
+    dist<span style="color: #008000;">&#91;</span>start<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">while</span><span style="color: #008000;">&#40;</span>act <span style="color: #000040;">!</span><span style="color: #000080;">=</span> <span style="color: #000040;">-</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        viz<span style="color: #008000;">&#91;</span>act<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span>
+        <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">auto</span> it <span style="color: #008080;">:</span> v<span style="color: #008000;">&#91;</span>act<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+            <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>dist<span style="color: #008000;">&#91;</span>act<span style="color: #008000;">&#93;</span> <span style="color: #000040;">+</span> it.<span style="color: #007788;">second</span> <span style="color: #000080;">&lt;</span> dist<span style="color: #008000;">&#91;</span>it.<span style="color: #007788;">first</span><span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+                dist<span style="color: #008000;">&#91;</span>it.<span style="color: #007788;">first</span><span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> dist<span style="color: #008000;">&#91;</span>act<span style="color: #008000;">&#93;</span> <span style="color: #000040;">+</span> it.<span style="color: #007788;">second</span><span style="color: #008080;">;</span>
+        act <span style="color: #000080;">=</span> <span style="color: #000040;">-</span><span style="color: #0000dd;">1</span><span style="color: #008080;">;</span>
+        <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+            <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span><span style="color: #000040;">!</span>viz<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+                <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>act <span style="color: #000080;">==</span> <span style="color: #000040;">-</span><span style="color: #0000dd;">1</span> <span style="color: #000040;">||</span> dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">&lt;</span> dist<span style="color: #008000;">&#91;</span>act<span style="color: #008000;">&#93;</span> <span style="color: #008000;">&#41;</span>
+                    act <span style="color: #000080;">=</span> i<span style="color: #008080;">;</span>
+    <span style="color: #008000;">&#125;</span>
+<span style="color: #008000;">&#125;</span>
+&nbsp;
+<span style="color: #0000ff;">int</span> main<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+    f <span style="color: #000080;">&gt;&gt;</span> n <span style="color: #000080;">&gt;&gt;</span> m<span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> m<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        f <span style="color: #000080;">&gt;&gt;</span> x <span style="color: #000080;">&gt;&gt;</span> y <span style="color: #000080;">&gt;&gt;</span> wh<span style="color: #008080;">;</span>
+        v<span style="color: #008000;">&#91;</span>x<span style="color: #008000;">&#93;</span>.<span style="color: #007788;">push_back</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#123;</span>y,wh<span style="color: #008000;">&#125;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #008000;">&#125;</span>
+    DJ<span style="color: #008000;">&#40;</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">2</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+        <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">==</span> inf<span style="color: #008000;">&#41;</span>
+            g <span style="color: #000080;">&lt;&lt;</span> <span style="color: #0000dd;">0</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #FF0000;">' '</span><span style="color: #008080;">;</span>
+        <span style="color: #0000ff;">else</span>
+            g <span style="color: #000080;">&lt;&lt;</span> dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #FF0000;">' '</span><span style="color: #008080;">;</span>
+    f.<span style="color: #007788;">close</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    g.<span style="color: #007788;">close</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+<span style="color: #008000;">&#125;</span>
+&nbsp;</pre>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="butoane" style = "background-color :  #A4A5A6;" data-dismiss="modal">Close</button>
+              <!--
+                <button class = "butoane" id="edge-update"  data-dismiss="modal" onclick="updateEdge();">Update</button>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+       <!--  Modal BKT  -->
+       <div class="modal fade bd-example-modal-sm" id="BKT" tabindex="-1" role="dialog" aria-labelledby="BKT" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Algoritm Backtracking</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+<pre class="cpp" style="font-family:monospace;"><span style="color: #339900;">#include &lt;fstream&gt;</span>
+<span style="color: #339900;">#include &lt;set&gt;</span>
+<span style="color: #339900;">#include &lt;vector&gt;</span>
+<span style="color: #339900;">#include &lt;bitset&gt;</span>
+<span style="color: #339900;">#define NMAX 50010</span>
+<span style="color: #339900;">#define inf 2047483646</span>
+<span style="color: #0000ff;">using</span> <span style="color: #0000ff;">namespace</span> std<span style="color: #008080;">;</span>
+&nbsp;
+ifstream f<span style="color: #008000;">&#40;</span><span style="color: #FF0000;">&quot;dijkstra.in&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+ofstream g<span style="color: #008000;">&#40;</span><span style="color: #FF0000;">&quot;dijkstra.out&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+<span style="color: #0000ff;">int</span> n, m,x,y,wh, dist<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+vector <span style="color: #000080;">&lt;</span> pair<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">int</span>,<span style="color: #0000ff;">int</span><span style="color: #000080;">&gt;</span> <span style="color: #000080;">&gt;</span> v<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+bitset <span style="color: #000080;">&lt;</span>NMAX<span style="color: #000080;">&gt;</span> viz<span style="color: #008080;">;</span>
+&nbsp;
+<span style="color: #0000ff;">void</span> BKT<span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> nod<span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">auto</span> it <span style="color: #008080;">:</span> v<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+        <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>dist<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span> <span style="color: #000040;">+</span> it.<span style="color: #007788;">second</span> <span style="color: #000080;">&lt;=</span> dist<span style="color: #008000;">&#91;</span>it.<span style="color: #007788;">first</span><span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+        <span style="color: #008000;">&#123;</span>
+            dist<span style="color: #008000;">&#91;</span>it.<span style="color: #007788;">first</span><span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> dist<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span> <span style="color: #000040;">+</span> it.<span style="color: #007788;">second</span><span style="color: #008080;">;</span>
+            BKT<span style="color: #008000;">&#40;</span>it.<span style="color: #007788;">first</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+        <span style="color: #008000;">&#125;</span>
+<span style="color: #008000;">&#125;</span>
+<span style="color: #0000ff;">int</span> main<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+    f <span style="color: #000080;">&gt;&gt;</span> n <span style="color: #000080;">&gt;&gt;</span> m<span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> m<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        f <span style="color: #000080;">&gt;&gt;</span> x <span style="color: #000080;">&gt;&gt;</span> y <span style="color: #000080;">&gt;&gt;</span> wh<span style="color: #008080;">;</span>
+        v<span style="color: #008000;">&#91;</span>x<span style="color: #008000;">&#93;</span>.<span style="color: #007788;">push_back</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#123;</span>y,wh<span style="color: #008000;">&#125;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #008000;">&#125;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+        dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> inf<span style="color: #008080;">;</span>
+    dist<span style="color: #008000;">&#91;</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+    BKT<span style="color: #008000;">&#40;</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">2</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+        <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">==</span> inf<span style="color: #008000;">&#41;</span>
+            g <span style="color: #000080;">&lt;&lt;</span> <span style="color: #0000dd;">0</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #FF0000;">' '</span><span style="color: #008080;">;</span>
+        <span style="color: #0000ff;">else</span>
+            g <span style="color: #000080;">&lt;&lt;</span> dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #FF0000;">' '</span><span style="color: #008080;">;</span>
+    f.<span style="color: #007788;">close</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    g.<span style="color: #007788;">close</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+<span style="color: #008000;">&#125;</span>
+&nbsp;</pre>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="butoane" style = "background-color :  #A4A5A6;" data-dismiss="modal">Close</button>
+              <!--
+                <button class = "butoane" id="edge-update"  data-dismiss="modal" onclick="updateEdge();">Update</button>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+      <!--  Modal Bellman  -->
+      <div class="modal fade bd-example-modal-sm" id="BF" tabindex="-1" role="dialog" aria-labelledby="BF" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Algoritm Bellman-Ford</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+<pre class="cpp" style="font-family:monospace;"><span style="color: #339900;">#include &lt;bits/stdc++.h&gt;</span>
+<span style="color: #339900;">#define NMAX 50005</span>
+<span style="color: #339900;">#define pi pair&lt;int,int&gt;</span>
+<span style="color: #0000ff;">using</span> <span style="color: #0000ff;">namespace</span> std<span style="color: #008080;">;</span>
+ifstream f<span style="color: #008000;">&#40;</span><span style="color: #FF0000;">&quot;bellmanford.in&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+ofstream g<span style="color: #008000;">&#40;</span><span style="color: #FF0000;">&quot;bellmanford.out&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+&nbsp;
+<span style="color: #0000ff;">int</span> n, m, viz<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span>, dist<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span>, inQ<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+vector <span style="color: #000080;">&lt;</span>pi<span style="color: #000080;">&gt;</span> G<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+queue <span style="color: #000080;">&lt;</span><span style="color: #0000ff;">int</span><span style="color: #000080;">&gt;</span> Q<span style="color: #008080;">;</span>
+<span style="color: #0000ff;">int</span> BF<span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> start<span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+        dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #0000dd;">30</span><span style="color: #008080;">;</span>
+    dist<span style="color: #008000;">&#91;</span>start<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+    viz<span style="color: #008000;">&#91;</span>start<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span>
+    inQ<span style="color: #008000;">&#91;</span>start<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span>
+    Q.<span style="color: #007788;">push</span><span style="color: #008000;">&#40;</span>start<span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">while</span><span style="color: #008000;">&#40;</span><span style="color: #000040;">!</span>Q.<span style="color: #007788;">empty</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        <span style="color: #0000ff;">int</span> nod <span style="color: #000080;">=</span> Q.<span style="color: #007788;">front</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+        Q.<span style="color: #007788;">pop</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+        inQ<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+        <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">auto</span> it <span style="color: #008080;">:</span> G<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+        <span style="color: #008000;">&#123;</span>
+            <span style="color: #0000ff;">int</span> cost <span style="color: #000080;">=</span> it.<span style="color: #007788;">second</span><span style="color: #008080;">;</span>
+            <span style="color: #0000ff;">int</span> next <span style="color: #000080;">=</span> it.<span style="color: #007788;">first</span><span style="color: #008080;">;</span>
+            <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>dist<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span> <span style="color: #000040;">+</span> cost <span style="color: #000080;">&lt;</span> dist<span style="color: #008000;">&#91;</span>next<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+            <span style="color: #008000;">&#123;</span>
+                dist<span style="color: #008000;">&#91;</span>next<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> dist<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span> <span style="color: #000040;">+</span> cost<span style="color: #008080;">;</span>
+                viz<span style="color: #008000;">&#91;</span>next<span style="color: #008000;">&#93;</span><span style="color: #000040;">++</span><span style="color: #008080;">;</span>
+                <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>viz<span style="color: #008000;">&#91;</span>next<span style="color: #008000;">&#93;</span> <span style="color: #000080;">&gt;=</span> n<span style="color: #000040;">-</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#41;</span> <span style="color: #0000ff;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+&nbsp;
+                <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span><span style="color: #000040;">!</span>inQ<span style="color: #008000;">&#91;</span>next<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+                <span style="color: #008000;">&#123;</span>
+                    Q.<span style="color: #007788;">push</span><span style="color: #008000;">&#40;</span>next<span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+                    inQ<span style="color: #008000;">&#91;</span>next<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span>
+                <span style="color: #008000;">&#125;</span>
+            <span style="color: #008000;">&#125;</span>
+        <span style="color: #008000;">&#125;</span>
+    <span style="color: #008000;">&#125;</span>
+    <span style="color: #0000ff;">return</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span>
+<span style="color: #008000;">&#125;</span>
+<span style="color: #0000ff;">int</span> main<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+    f <span style="color: #000080;">&gt;&gt;</span> n <span style="color: #000080;">&gt;&gt;</span> m<span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> x, y, c, i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> m<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        f <span style="color: #000080;">&gt;&gt;</span> x <span style="color: #000080;">&gt;&gt;</span> y <span style="color: #000080;">&gt;&gt;</span> c<span style="color: #008080;">;</span>
+        G<span style="color: #008000;">&#91;</span>x<span style="color: #008000;">&#93;</span>.<span style="color: #007788;">push_back</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#123;</span>y,c<span style="color: #008000;">&#125;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #008000;">&#125;</span>
+    <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span><span style="color: #000040;">!</span>BF<span style="color: #008000;">&#40;</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span>
+        g <span style="color: #000080;">&lt;&lt;</span> <span style="color: #FF0000;">&quot;Ciclu negativ!&quot;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">else</span>
+    <span style="color: #008000;">&#123;</span>
+        <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">2</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+            <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">==</span> <span style="color: #0000dd;">1</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #0000dd;">30</span><span style="color: #008000;">&#41;</span>
+                g <span style="color: #000080;">&lt;&lt;</span> <span style="color: #0000dd;">0</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #FF0000;">' '</span><span style="color: #008080;">;</span>
+            <span style="color: #0000ff;">else</span>
+                g <span style="color: #000080;">&lt;&lt;</span> dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #FF0000;">' '</span><span style="color: #008080;">;</span>
+    <span style="color: #008000;">&#125;</span>
+    f.<span style="color: #007788;">close</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    g.<span style="color: #007788;">close</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+<span style="color: #008000;">&#125;</span>
+&nbsp;</pre>  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="butoane" style = "background-color :  #A4A5A6;" data-dismiss="modal">Close</button>
+              <!--
+                <button class = "butoane" id="edge-update"  data-dismiss="modal" onclick="updateEdge();">Update</button>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+</body>
+</html>

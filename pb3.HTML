@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-4.5.3-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="STYLE/stil.css"/>
+    <link rel="stylesheet" href="STYLE/vizualizare_stil.css"/>
+    <script src="ajax.js"></script>
+    <script src = "bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+    <title>ATESTAT GRAFURI</title>
+</head>
+<body>
+    <!--  HERO IMAGE-->
+    <div class="hero-image">
+        <div class="hero-text fonttext">
+            <div>Drumuri minime in grafuri</div>
+        </div>
+    </div>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg Gri1 navbar-dark sticky-top fonttext">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class=" nav-item">
+            <a class="nav-link" href="home.HTML">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="grafuri.HTML">Grafuri si drumuri</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="vizualizare.HTML">Vizualizare</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Probleme
+              </a>
+              <div class="dropdown-menu Gri3" id = "drop">
+                <a class="dropdown-item" href="pb1.HTML">Problema Catun</a>
+                <a class="dropdown-item" href="pb2.HTML">Problema Lanterna</a>
+                <a class="dropdown-item" href="pb3.HTML">Problema Dragoni</a>
+              </div>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="info.html">Info</a>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- Continut -->
+
+    <div class = "row fonttext TextGri">
+      <div class="col-md-2">
+      </div>
+
+      <div class="col-md-8 spatiu Gri2">
+
+        <h3 class="centru Text_Title">
+          Problema: Dragoni
+        </h3>
+        
+        <div class="Text_Int underline sps TextVerde">
+          Enunț
+        </div>
+
+        <div class="Text_Int ">
+          <p>Supăraţi că lansarea părţii a treia a filmului lor preferat s-a amânat până în februarie <var>2019</var>, Henry şi Hetty s-au gândit la propriul scenariu pentru finalul trilogiei:</p>
+          <p>Într-o lume în care vikingii pot zbura cu dragonii există <var>N</var> insule. Hiccup, şeful tribului de vikingi aflat pe insula <var>1</var>, ştie <var>M</var> rute directe de zbor <strong>bidirecţionale</strong> între insule. Pentru fiecare <var>j</var> intre <var>1</var> si <var>M</var>, ruta <var>j</var> uneşte insulele <var>A<sub>j</sub></var> şi <var>B<sub>j</sub></var> şi are lungime <var>D<sub>j</sub></var>.<br />
+          Pe fiecare insulă <var>i</var>, <var>(1 ≤ i ≤ n)</var> există dragoni din specia <var>i</var> care pot zbura fără a se opri pentru odihnă o distanţă maximă <var>Dmax<sub>i</sub></var>. Cu alte cuvinte, dragonii de pe insula <var>i</var> vor putea parcurge orice rută <var>j</var>, <var>(1 ≤ j ≤ m)</var> pentru care <var>D<sub>j</sub></var> ≤ <var>Dmax<sub>i</sub></var>, indiferent de ce alte drumuri au făcut anterior.</p>
+          <p>Hiccup doreşte să ajungă de pe insula <var>1</var> pe insula <var>N</var> pentru a-l salva pe Toothless, dragonul lui. Pentru a ajunge acolo, el va lua iniţial un dragon din specia <var>1</var> (de pe insula <var>1</var>). Apoi, dacă la un moment dat Hiccup se află pe o insula <var>i</var>, <var>(1 ≤ i ≤ n)</var> având cu el un dragon din specia <var>t</var>, el poate:</p>
+          <p>1. Să zboare de pe insula <var>i</var> pe o altă insulă <var>x</var> cu dragonul pe care îl are, folosind o rută directă <var>j</var> între insulele <var>i</var> si <var>x</var>, bineînţeles doar dacă <var>D<sub>j</sub></var> ≤ <var>Dmax<sub>t</sub></var>.</p>
+          <p>2. Să schimbe dragonul din specia <var>t</var> pe care îl are cu un dragon din specia <var>i</var> aflat pe insula respectivă.</p>
+        
+        </div>
+
+
+        <div class="Text_Int underline sps TextVerde">
+          Cerința
+        </div>
+
+        <div class="Text_Int">
+          <p>a. Să se determine distanţa maxima <var>Dmax<sub>i</sub></var> caracteristică unui dragon la care Hiccup poate ajunge fără a schimba dragonul pe care l-a luat iniţial de pe insula <var>1</var>. <br />
+            b. Să se determine distanţa minimă pe care Hiccup trebuie să o parcurgă pentru a ajunge de pe insula <var>1</var> pe insula <var>N</var>.</p>
+        </div>
+
+        <div class="Text_Int underline sps TextVerde">
+          Date de intrare
+        </div>
+
+        <div class="Text_Int">
+          <p>Fişierul de intrare <var>dragoni.in</var> conţine pe prima linie un număr natural <var>p</var>. Pentru toate testele de intrare, numărul <var>p</var> poate avea doar valoarea <var>1</var> sau valoarea <var>2</var>. Pe a doua linie se găsesc două numere naturale <var>N</var> şi <var>M</var> reprezentând numărul de insule, respectiv numărul de rute directe între insule. Pe a treia linie se găsesc <var>N</var> numere naturale, al <var>i</var>-ulea dintre acestea reprezentând distanta maximă <var>Dmax<sub>i</sub></var> pe care o poate zbura un dragon de pe insula <var>i</var>. Pe următoarele <var>M</var> linii sunt descrise cele <var>M</var> rute directe. Pe fiecare dintre aceste linii se găsesc câte trei numere naturale <var>A, B</var> şi <var>D</var> cu semnificaţia că există rută <strong>bidirecţională</strong> de lungime <var>D</var> între insulele <var>A</var> şi <var>B</var>.</p>
+        
+        </div>
+
+
+        <div class="Text_Int underline sps TextVerde">
+          Date de ieșire
+        </div>
+
+        <div class="Text_Int">
+          <p>In fişierul de ieşire <var>dragoni.out</var> se va afişa un singur numar natural.</p>
+          <p><strong>Dacă valoarea lui <var>p</var> este <var>1</var>, se rezolvă numai cerinţa a.</strong><br />
+          În acest caz numărul afişat va reprezenta distanţa maximă <var>Dmax<sub>i</sub></var> a unui dragon <var>i</var> la care Hiccup poate ajunge fără a schimba dragonul pe care l-a luat iniţial de pe insula <var>1</var>. </p>
+          <p><strong>Daca valoarea lui <var>p</var> este <var>2</var>, se va rezolva numai cerinţa b.</strong><br />
+          În acest caz numărul afişat va reprezenta distanţa minima pe care Hiccup trebuie să o parcurgă pentru a ajunge de pe insula <var>1</var> pe insula <var>N</var>.</p>
+        </div>
+
+        <div class="Text_Int underline sps TextVerde">
+          Restricții și precizări
+        </div>
+
+        <div class="Text_Int">
+      <ul>
+      <li><var>1 ≤ N ≤ 800</var></li>
+      <li><var>1 ≤ M ≤ 6000</var></li>
+      <li><var>1 ≤ Dmax<sub>i</sub> ≤ 50 000</var>, pentru orice <var>1 ≤ i ≤ N</var>.</li>
+      <li><var>1 ≤ A<sub>j</sub>, B<sub>j</sub> ≤ N</var>, pentru orice <var>1 ≤ j ≤ M</var>.</li>
+      <li><var>1 ≤ D<sub>j</sub> ≤ 50 000</var>, pentru orice <var>1 ≤ j ≤ M</var>.</li>
+      <li>Se garantează că Hiccup poate ajunge pe insula <var>N</var>.</li>
+      <li>Se garantează că răspunsul oricărei cerinţe este un număr natural mai mic decât <var>1 000 000 000</var>.</li>
+      <li>Pentru rezolvarea corectă a primei cerinţe se acordă <var>20%</var> din punctajul testului respectiv.</li>
+      <li>Pentru rezolvarea corectă a celei de-a doua cerinţe se acordă <var>80%</var> din punctajul testului respectiv.</li>
+      </ul>
+        </div>
+
+        <div class="Text_Int underline sps TextVerde">
+          Exemplu
+        </div>
+        <table class = "Text_Int table ">
+          <tr>
+            <td>
+              dragoni.in
+            </td>
+            <td>
+              dragoni.out
+            </td>
+          </tr>
+          <tr style="text-align: left !important;">
+            <td>
+              1<br />
+              5 6<br />
+              6 3 13 20 26<br />
+              1 2 5<br />
+              1 3 7<br />
+              1 5 10<br />
+              2 3 6<br />
+              3 4 5<br />
+              3 5 14<br />
+            </td>
+            <td>
+              20<br />
+            </td>
+          </tr>
+
+
+          <tr style="text-align: left !important; ">
+            <td>
+              2<br />
+              5 6<br />
+              6 3 13 20 26<br />
+              1 2 5<br />
+              1 3 7<br />
+              1 5 10<br />
+              2 3 6<br />
+              3 4 5<br />
+              3 5 14<br />
+            </td>
+            <td>
+             28<br />
+            </td>
+          </tr>
+        </table>
+
+
+        <div class="Text_Int underline sps TextVerde">
+          Indicații
+        </div>
+
+        <div class="Text_Int">
+          Pentru cerința <var>a</var> vom folosi o simplă parcurgere de tip BFS(parcurgere în lățime) <br>
+          Pentru cerința <var>b</var> vom folosi o matrice <var> pd[i][j] </var> care reprezintă distanța minimă
+          până la insula i având în prezent dragonul j.<br>
+          Se folosește procedeul relaxării muchiilor similar cu cel din algoritmul Bellman-Ford deoarece
+          vom introduce pe rând în coadă stările de tip <var>(i,j)</var>.
+          <br>
+          Pentru fiecare stare extrasă din coadă vom trece prin toți vecinii lui i și vom încerca să relaxăm muchiile.
+          în cazul în care putem ajunge într-un vecin vom actualiza <var>pd[vecin][j_nou]</var>, unde <var>j_nou</var> este calculat în funcție
+          de distanţa pe care o poate parcurge dragonul actual și cea pe care o poate parcruge dragonul de pe noua insulă.<br>
+          Răspunsul va fi maximul valorilor din <var>pd[n][i]</var> unde <var>i = 1...n</var>.
+        </div>
+
+        <button type="button" class="butoane" data-toggle="modal" data-target="#dij">
+          Cod sursă
+        </button>
+      </div>
+            
+      <div class="col-md-2"> 
+      </div>
+    </div>
+
+
+     <!-- FOOTER-->
+     <div class="row footer Gri1 TextGri fonttext ">
+      <div class="Gri1 mijloc col-md-12">
+        <p class=" Gri1 text_footer">
+          &#169; Copyright Petru-Gabriel Vamanu
+          <span></span>
+        </p>
+      </div>
+    </div>
+
+
+  <!--  Modal Solutie   -->
+  <div class="modal fade bd-example-modal-sm" id="dij" tabindex="-1" role="dialog" aria-labelledby="dij" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Soluție</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+<pre class="cpp" style="font-family:monospace;"><span style="color: #339900;">#include &lt;bits/stdc++.h&gt;</span>
+<span style="color: #339900;">#define NMAX 810</span>
+&nbsp;
+<span style="color: #0000ff;">using</span> <span style="color: #0000ff;">namespace</span> std<span style="color: #008080;">;</span>
+ifstream f<span style="color: #008000;">&#40;</span><span style="color: #FF0000;">&quot;dragoni.in&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+ofstream g<span style="color: #008000;">&#40;</span><span style="color: #FF0000;">&quot;dragoni.out&quot;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+&nbsp;
+<span style="color: #0000ff;">typedef</span> pair<span style="color: #000080;">&lt;</span><span style="color: #0000ff;">int</span>,<span style="color: #0000ff;">int</span><span style="color: #000080;">&gt;</span> pi<span style="color: #008080;">;</span>
+&nbsp;
+<span style="color: #0000ff;">int</span> task, n, m, x, y, z, dist<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+<span style="color: #0000ff;">int</span> d<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+vector <span style="color: #000080;">&lt;</span>pi<span style="color: #000080;">&gt;</span> G<span style="color: #008000;">&#91;</span>NMAX<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+bitset <span style="color: #000080;">&lt;</span>NMAX<span style="color: #000080;">&gt;</span> viz<span style="color: #008080;">;</span>
+&nbsp;
+<span style="color: #0000ff;">struct</span> pint<span style="color: #008000;">&#123;</span>
+    <span style="color: #0000ff;">int</span> first, second<span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">bool</span> operator<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#40;</span>pint a, pint b<span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        <span style="color: #0000ff;">return</span> d<span style="color: #008000;">&#91;</span>a.<span style="color: #007788;">first</span><span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>a.<span style="color: #007788;">second</span><span style="color: #008000;">&#93;</span> <span style="color: #000080;">&gt;</span> d<span style="color: #008000;">&#91;</span>b.<span style="color: #007788;">first</span><span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>b.<span style="color: #007788;">second</span><span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+    <span style="color: #008000;">&#125;</span>
+<span style="color: #008000;">&#125;</span><span style="color: #008080;">;</span>
+&nbsp;
+<span style="color: #0000ff;">void</span> BFS1<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+    queue <span style="color: #000080;">&lt;</span><span style="color: #0000ff;">int</span><span style="color: #000080;">&gt;</span> Q<span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">int</span> ans <span style="color: #000080;">=</span> dist<span style="color: #008000;">&#91;</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+    viz<span style="color: #008000;">&#91;</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span>
+    Q.<span style="color: #007788;">push</span><span style="color: #008000;">&#40;</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">while</span><span style="color: #008000;">&#40;</span><span style="color: #000040;">!</span>Q.<span style="color: #007788;">empty</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        <span style="color: #0000ff;">int</span> nod <span style="color: #000080;">=</span> Q.<span style="color: #007788;">front</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+        <span style="color: #666666;">// g &lt;&lt; nod &lt;&lt; '\n';</span>
+        Q.<span style="color: #007788;">pop</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+        <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">auto</span> it <span style="color: #008080;">:</span> G<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+        <span style="color: #008000;">&#123;</span>
+            <span style="color: #666666;">// g &lt;&lt; it.first &lt;&lt; ' ' &lt;&lt; it.second &lt;&lt; '\n';</span>
+            <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>viz<span style="color: #008000;">&#91;</span>it.<span style="color: #007788;">first</span><span style="color: #008000;">&#93;</span> <span style="color: #000080;">==</span> <span style="color: #0000dd;">0</span> <span style="color: #000040;">&amp;&amp;</span> dist<span style="color: #008000;">&#91;</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#93;</span> <span style="color: #000080;">&gt;=</span> it.<span style="color: #007788;">second</span> <span style="color: #008000;">&#41;</span>
+            <span style="color: #008000;">&#123;</span>
+                viz<span style="color: #008000;">&#91;</span>it.<span style="color: #007788;">first</span><span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span>
+                Q.<span style="color: #007788;">push</span><span style="color: #008000;">&#40;</span>it.<span style="color: #007788;">first</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+                ans <span style="color: #000080;">=</span> max<span style="color: #008000;">&#40;</span>ans, dist<span style="color: #008000;">&#91;</span>it.<span style="color: #007788;">first</span><span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+            <span style="color: #008000;">&#125;</span>
+        <span style="color: #008000;">&#125;</span>
+    <span style="color: #008000;">&#125;</span>
+    g <span style="color: #000080;">&lt;&lt;</span> ans<span style="color: #008080;">;</span>
+<span style="color: #008000;">&#125;</span>
+&nbsp;
+&nbsp;
+<span style="color: #0000ff;">void</span> ceva<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+&nbsp;
+    priority_queue<span style="color: #000080;">&lt;</span> pint ,  vector<span style="color: #000080;">&lt;</span>pint<span style="color: #000080;">&gt;</span>, pint <span style="color: #000080;">&gt;</span>Q<span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+        <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> j <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> j <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>j<span style="color: #008000;">&#41;</span>
+            d<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>j<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #0000dd;">29</span><span style="color: #008080;">;</span>
+    d<span style="color: #008000;">&#91;</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span><span style="color: #0000dd;">1</span><span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+    Q.<span style="color: #007788;">push</span><span style="color: #008000;">&#40;</span> <span style="color: #008000;">&#123;</span><span style="color: #0000dd;">1</span>,<span style="color: #0000dd;">1</span><span style="color: #008000;">&#125;</span> <span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">while</span><span style="color: #008000;">&#40;</span><span style="color: #000040;">!</span>Q.<span style="color: #007788;">empty</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        <span style="color: #0000ff;">int</span> nod <span style="color: #000080;">=</span> <span style="color: #008000;">&#40;</span>Q.<span style="color: #007788;">top</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span>.<span style="color: #007788;">first</span><span style="color: #008080;">;</span>
+        <span style="color: #0000ff;">int</span> dragon <span style="color: #000080;">=</span> <span style="color: #008000;">&#40;</span>Q.<span style="color: #007788;">top</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008000;">&#41;</span>.<span style="color: #007788;">second</span><span style="color: #008080;">;</span>
+        Q.<span style="color: #007788;">pop</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+        <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">auto</span> it<span style="color: #008080;">:</span> G<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+        <span style="color: #008000;">&#123;</span>
+            <span style="color: #0000ff;">int</span> next <span style="color: #000080;">=</span> it.<span style="color: #007788;">first</span><span style="color: #008080;">;</span>
+            <span style="color: #0000ff;">int</span> cost <span style="color: #000080;">=</span> it.<span style="color: #007788;">second</span><span style="color: #008080;">;</span>
+            <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>dist<span style="color: #008000;">&#91;</span>dragon<span style="color: #008000;">&#93;</span> <span style="color: #000080;">&gt;=</span> cost<span style="color: #008000;">&#41;</span>
+            <span style="color: #008000;">&#123;</span>
+                <span style="color: #0000ff;">int</span> neww <span style="color: #000080;">=</span> dragon<span style="color: #008080;">;</span>
+                <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>dist<span style="color: #008000;">&#91;</span>dragon<span style="color: #008000;">&#93;</span> <span style="color: #000080;">&lt;=</span> dist<span style="color: #008000;">&#91;</span>next<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+                    neww <span style="color: #000080;">=</span> next<span style="color: #008080;">;</span>
+                <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>d<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>dragon<span style="color: #008000;">&#93;</span> <span style="color: #000040;">+</span> cost <span style="color: #000080;">&lt;</span> d<span style="color: #008000;">&#91;</span>next<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>neww<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span>
+                <span style="color: #008000;">&#123;</span>
+                    d<span style="color: #008000;">&#91;</span>next<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>neww<span style="color: #008000;">&#93;</span> <span style="color: #000080;">=</span> d<span style="color: #008000;">&#91;</span>nod<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>dragon<span style="color: #008000;">&#93;</span> <span style="color: #000040;">+</span> cost<span style="color: #008080;">;</span>
+                    Q.<span style="color: #007788;">push</span><span style="color: #008000;">&#40;</span> <span style="color: #008000;">&#123;</span>next, neww<span style="color: #008000;">&#125;</span> <span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+                <span style="color: #008000;">&#125;</span>
+            <span style="color: #008000;">&#125;</span>
+&nbsp;
+        <span style="color: #008000;">&#125;</span>
+    <span style="color: #008000;">&#125;</span>
+    <span style="color: #0000ff;">int</span> dmax <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span> <span style="color: #000080;">&lt;&lt;</span> <span style="color: #0000dd;">29</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        dmax <span style="color: #000080;">=</span> min<span style="color: #008000;">&#40;</span>dmax, d<span style="color: #008000;">&#91;</span>n<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #008000;">&#125;</span>
+    g <span style="color: #000080;">&lt;&lt;</span> dmax<span style="color: #008080;">;</span>
+<span style="color: #008000;">&#125;</span>
+<span style="color: #0000ff;">int</span> main<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span>
+<span style="color: #008000;">&#123;</span>
+    f <span style="color: #000080;">&gt;&gt;</span> task <span style="color: #000080;">&gt;&gt;</span> n <span style="color: #000080;">&gt;&gt;</span> m<span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">for</span><span style="color: #008000;">&#40;</span><span style="color: #0000ff;">int</span> i <span style="color: #000080;">=</span> <span style="color: #0000dd;">1</span><span style="color: #008080;">;</span> i <span style="color: #000080;">&lt;=</span> n<span style="color: #008080;">;</span> <span style="color: #000040;">++</span>i<span style="color: #008000;">&#41;</span>
+        f <span style="color: #000080;">&gt;&gt;</span> dist<span style="color: #008000;">&#91;</span>i<span style="color: #008000;">&#93;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">while</span><span style="color: #008000;">&#40;</span>m<span style="color: #000040;">--</span><span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        f <span style="color: #000080;">&gt;&gt;</span> x <span style="color: #000080;">&gt;&gt;</span> y <span style="color: #000080;">&gt;&gt;</span> z<span style="color: #008080;">;</span>
+        G<span style="color: #008000;">&#91;</span>x<span style="color: #008000;">&#93;</span>.<span style="color: #007788;">push_back</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#123;</span>y,z<span style="color: #008000;">&#125;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+        G<span style="color: #008000;">&#91;</span>y<span style="color: #008000;">&#93;</span>.<span style="color: #007788;">push_back</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#123;</span>x,z<span style="color: #008000;">&#125;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #008000;">&#125;</span>
+    <span style="color: #0000ff;">if</span><span style="color: #008000;">&#40;</span>task <span style="color: #000080;">==</span> <span style="color: #0000dd;">1</span><span style="color: #008000;">&#41;</span>
+    <span style="color: #008000;">&#123;</span>
+        BFS1<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #008000;">&#125;</span>
+    <span style="color: #0000ff;">else</span>
+    <span style="color: #008000;">&#123;</span>
+        ceva<span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #008000;">&#125;</span>
+    f.<span style="color: #007788;">close</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    g.<span style="color: #007788;">close</span><span style="color: #008000;">&#40;</span><span style="color: #008000;">&#41;</span><span style="color: #008080;">;</span>
+    <span style="color: #0000ff;">return</span> <span style="color: #0000dd;">0</span><span style="color: #008080;">;</span>
+<span style="color: #008000;">&#125;</span>
+&nbsp;</pre>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="butoane" style = "background-color :  #A4A5A6;" data-dismiss="modal">Close</button>
+          <!--
+            <button class = "butoane" id="edge-update"  data-dismiss="modal" onclick="updateEdge();">Update</button>
+          -->
+        </div>
+      </div>
+    </div>
+  </div>  
+  </body>
+</html>

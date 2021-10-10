@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-4.5.3-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="STYLE/stil.css"/>
+    <link rel="stylesheet" href="GRAF/vis.css"/>
+    <link rel="stylesheet" href="STYLE/vizualizare_stil.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="logo.png" />
+    <script src="GRAF/vis.js"></script>
+    <script src="ajax.js"></script>
+    <script src = "bootstrap-4.5.3-dist/js/bootstrap.min.js"></script>
+    <title>ATESTAT GRAFURI</title>
+
+    <!-- SCRIPT DESENEAZA GRAF -->
+  <script>
+    let nodes, edges, network;
+    let edges_to_delete;
+    let nodes_to_delete;
+  function sterge()
+  {
+    let txt;
+    if (confirm("Confirmati Stergerea")) {
+      for(let i = 0; i < nodes_to_delete; i++)
+            nodes.remove({id : nodes_to_delete[i]});
+      for(let i = 0; i < edges_to_delete; i++)
+            edges.remove({id : edges_to_delete[i]});
+    } else {
+      txt = "Stergere anulata!";
+    }
+  }
+
+  function refresh()
+  {
+    edges.forEach(function(y){
+        if(y.dashes == true)
+        {
+          let z = y;
+          try{
+            edges.remove({
+              id: y.id
+            });
+          }
+          catch(err)
+          {
+            alert(err);
+          }
+          /*
+          */
+         try{
+           edges.update({
+             id: z.id,
+             from: z.from,
+             to: z.to,
+             weight:z.weight,
+             arrows:{middle:{scaleFactor:0.5}, to:true},
+             dashes:false,
+             label : z.label,
+            });
+          }
+          catch(err)
+          {
+            alert(err);
+          }
+        }
+      });
+    }
+  function toJSON(obj)
+  {
+    return JSON.stringify(obj, null, 4);
+  }
+  function addNode()
+  {
+    document.getElementById("rez").innerHTML = [];
+    refresh();
+    try
+    {
+      document.getElementById('node-label').value = document.getElementById('node-id').value ;
+      nodes.add({
+        id: document.getElementById('node-id').value,
+        label: document.getElementById('node-label').value,
+        color : '#519c38'
+      });
+      document.getElementById('node-id').value = parseInt(document.getElementById('node-id').value) + 1;
+    }
+    catch(err)
+    {
+      alert(err);
+    }
+  }
+  function removeNode()
+  {
+    document.getElementById("rez").innerHTML = [];
+    refresh();
+    try
+    {
+      nodes.remove({id: document.getElementById('node-id').value});
+      document.getElementById('node-id').value = parseInt(document.getElementById('node-id').value) - 1;
+    }
+    catch(err)
+    {
+      alert(err);
+    }
+  }
+  function updateNode()
+  {
+
+    document.getElementById("rez").innerHTML = [];
+    refresh();
+    try
+    {
+      nodes.update({
+        id: document.getElementById('node-id').value,
+        label: document.getElementById('node-label').value,
+        color : '#519c38'
+      });
+    }
+    catch
+    {
+      alert(err);
+    }
+  }
+  function addEdge()
+  {
+
+    document.getElementById("rez").innerHTML = [];
+    refresh();
+    document.getElementById('edge-id').value = parseInt(document.getElementById('edge-id').value) + 1;
+    if(parseInt(document.getElementById('edge-weight').value) < 0)
+    {
+      alert('Muchie de cost negativ!');
+      return;
+    }
+    try{
+      edges.add({
+        id: document.getElementById('edge-id').value,
+        from: document.getElementById('edge-from').value,
+        to: document.getElementById('edge-to').value,
+        weight: parseInt(document.getElementById('edge-weight').value),
+        arrows:{middle:{scaleFactor:0.5}, to:true},
+        label : parseInt(document.getElementById('edge-weight').value)
+      });
+    }
+    catch(err)
+    {
+      alert(err);
+    }
+  }
+  function updateEdge()
+  {
+
+    document.getElementById("rez").innerHTML = [];
+    refresh();
+    try{
+      edges.update({
+        id: document.getElementById('edge-id').value,
+        from: document.getElementById('edge-from').value,
+        to: document.getElementById('edge-to').value,
+        weight: document.getElementById('edge-weight').value,
+        arrows:{middle:{scaleFactor:0.5}, to:true},
+        label : document.getElementById('edge-weight').value
+      });
+    }
+    catch(err)
+    {
+      alert(err);
+    }
+  }
+  function removeEdge()
+  {
+
+    document.getElementById("rez").innerHTML = [];
+    refresh();
+    try{
+      edges.remove({
+        id: document.getElementById('edge-id').value
+      });
+    }
+    catch(err)
+    {
+      alert(err);
+    }
+  }
+
+function draw() {
+nodes = new vis.DataSet();
+nodes.on('*', function () {
+    document.getElementById('nodes').innerHTML = JSON.stringify(nodes.get(), null, 4);
+});
+nodes.add([
+    {id: '1', label: '1',  color : '#519c38'},
+    {id: '2', label: '2',  color : '#519c38'},
+    {id: '3', label: '3',  color : '#519c38'},
+    {id: '4', label: '4',  color : '#519c38'},
+    {id: '5', label: '5',  color : '#519c38'}
+]);
+
+edges = new vis.DataSet();
+edges.on('*', function () {
+    document.getElementById('edges').innerHTML = JSON.stringify(edges.get(), null, 4);
+});
+edges.add([
+    {id: '1', from: '1', to: '2', weight: '23', arrows:{middle:{scaleFactor:0.5}, to:true},label : '23', dashes : false},
+    {id: '2', from: '1', to: '3', weight: '152', arrows:{middle:{scaleFactor:0.5}, to:true},label : '152', dashes : false},
+    {id: '3', from: '2', to: '4', weight: '42', arrows:{middle:{scaleFactor:0.5}, to:true},label : '42', dashes : false},
+    {id: '4', from: '2', to: '5', weight: '99', arrows:{middle:{scaleFactor:0.5}, to:true},label : '99', dashes : false},
+    {id: '5', from: '4', to: '3', weight: '10', arrows:{middle:{scaleFactor:0.5}, to:true},label : '10', dashes : false}
+]);
+let container = document.getElementById('network');
+let data = {
+    nodes: nodes,
+    edges: edges
+};
+var options = {
+  physics: {
+          enabled : false
+        },
+  configure:function (option, path) {
+      if (path.indexOf('smooth') !== -1 || option === 'smooth') {
+        return true;
+      }
+      return false;
+    },
+    edges: {
+      smooth: {
+        type: 'continuous'
+      }
+    }
+};
+network = new vis.Network(container, data, options);
+
+    /// SELECTARE NOD
+    network.on("selectNode", function (params) {
+        ///console.log('selectNode Event:', params.edges );
+        nodes_to_delete = params.nodes;
+    });
+
+
+    ///SELECTARE MUCHIE
+    network.on("selectEdge", function (params) {
+        ///console.log('selectEdge Event:', params.edges);
+        edges_to_delete = edges_to_delete + params.edges;
+    });
+    network.on("deselectNode", function (params) {
+      edges_to_delete = [];
+      nodes_to_delete = [];
+        //console.log('deselectNode Event:', params);
+    });
+    network.on("deselectEdge", function (params) {
+      edges_to_delete = [];
+      nodes_to_delete = [];
+        ///console.log('deselectEdge Event:', params);
+    });
+
+}
+/* DIJKSTRA */
+
+class WeightedGraph {
+  constructor() {
+    this.nodes = [];
+    this.adjacencyList = {};
+  }
+  addVertex(vertex) {
+      this.nodes.push(vertex);
+    if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
+  }
+  addEdge(vertex1, vertex2, weight, id) {
+    this.adjacencyList[vertex1].push({ node: vertex2, weight: weight, id: id });
+    console.log({ node: vertex2, weight: weight });
+  }
+  Dijkstra(start, finish) {
+    let dist = [];
+    let viz = [];
+    let last = [];
+    let id_last =[];
+    for(let i = 0; i < this.nodes.length; i++)
+    {
+        dist[ this.nodes[i] ] = (1 << 30);
+        viz[this.nodes[i] ] = 0;
+        last[this.nodes[i] ] = this.nodes[i] ;
+        id_last[this.nodes[i] ] = 0 ;
+    }
+    dist[start] = 0;
+    last[start] = start;
+    let act = start;
+    while(act != -1)
+    {
+        viz[act] = 1;
+        console.log("AM AJUNS IN " + act);
+        this.adjacencyList[act].forEach(function (nxt)
+        {
+            //console.log(nxt.node);
+            if((parseInt(dist[act]) + parseInt(nxt.weight)) < parseInt(dist[nxt.node]))
+            {
+                last[nxt.node] = act;
+                id_last[nxt.node] = nxt.id;
+                console.log(nxt.id);
+                dist[nxt.node] = parseInt(dist[act]) + parseInt(nxt.weight);
+            }
+        });
+        act = -1;
+        for(var i = 0; i < this.nodes.length; i++)
+        {
+            if(viz[ this.nodes[i] ] == 0)
+            {
+                if(act == -1 || dist[act] > dist[ this.nodes[i] ])
+                act = this.nodes[i];
+            }
+        }
+
+    }
+    let path = [];
+    let x = finish;
+    if(dist[finish] == (1 << 30))
+    {
+      document.getElementById("rez").innerHTML = "Nu se poate ajunge din nodul " + start + " in nodul " + finish;
+      return;
+    }
+    while(x != last[x])
+    {
+      path.push(id_last[x]);
+      x = last[x];
+    }
+    path.reverse();
+    refresh();
+    path.forEach( function(x)
+    {
+      edges.forEach(function(y){
+        if(x.id == y.id)
+        {
+          let z = y;
+            try{
+              edges.remove({
+                id: y.id
+              });
+            }
+            catch(err)
+            {
+              alert(err);
+            }
+          /*
+          */
+            try{
+              edges.update({
+                id: z.id,
+                from: z.from,
+                to: z.to,
+                weight:z.weight,
+                arrows:{middle:{scaleFactor:0.5}, to:true},
+                dashes:true,
+                label : z.label,
+              });
+            }
+            catch(err)
+            {
+              alert(err);
+            }
+          }
+        });
+    });
+    //path.push(start);
+    //console.log(dist);
+    //console.log(last);
+    //console.log(path);
+    document.getElementById("rez").innerHTML = "Costul drumului minim de la nodul " + start + " la nodul " + finish + " este " + dist[finish];
+  }
+}
+
+
+function SHORTESTPATH(data_n, data_e)
+{
+  let g = new WeightedGraph();
+  ///Pun noduri
+  data_n.forEach(function (item)
+  {
+    console.log(item.id);
+    g.addVertex(parseInt(item.id));
+  });
+  ///Pun muchii
+  data_e.forEach(function (item)
+  {
+    console.log(item.from, item.to, item.weight);
+    g.addEdge(parseInt(item.from), parseInt(item.to), parseInt(item.weight), item);
+  });
+  console.log("REZULTAT");
+  let start =  document.getElementById('start-id').value;
+  let end =  document.getElementById('end-id').value;
+  g.Dijkstra(start,end);
+}
+</script>
+
+
+</head>
+<body onload="draw();">
+  <!--  HERO IMAGE-->
+  <div class="hero-image">
+    <div class="hero-text fonttext">
+      <div>Drumuri minime in grafuri</div>
+          </div>
+        </div>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg Gri1 navbar-dark sticky-top fonttext">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class=" nav-item">
+            <a class="nav-link" href="home.HTML">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="grafuri.HTML">Grafuri si drumuri</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="vizualizare.HTML">Vizualizare</a>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Probleme
+              </a>
+              <div class="dropdown-menu Gri3" id = "drop">
+                <a class="dropdown-item" href="pb1.HTML">Problema Catun</a>
+                <a class="dropdown-item" href="pb2.HTML">Problema Lanterna</a>
+                <a class="dropdown-item" href="pb3.HTML">Problema Dragoni</a>
+              </div>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="info.html">Info</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Continut -->
+    <div class="col-md-4"></div>
+
+  <div class = "row fonttext TextGri  spatiu">
+        <div class="col-md-2 ">
+        </div>
+        <div class="col-md-8 Gri2 centru">
+              <button type="button" style = "float: right;"class="butoane" data-toggle="modal" data-target="#info">
+                <b>?</b>
+              </button>
+
+              <h1 class="centru Text_Title">Vizualizare</h1>
+
+          <div class="row">
+            <div class="col-md-12 centru">
+              <table class="centru">
+                <tr>
+                <td  class="centru" style="font-size: 21px;">
+                  Actiuni:
+                </td>
+                <td class="centru">
+                    <!-- Button trigger modal -->
+                <button type="button" class="butoane" data-toggle="modal" data-target="#add_nod">
+                  Adauga nod
+                </button>
+                </td>
+                <td class="centru">
+                  <!-- Button trigger modal -->
+                  <button type="button" class="butoane" data-toggle="modal" data-target="#add_edge">
+                    Adauga muchie
+                  </button>
+                </td>
+                <td class="centru" >
+                  <button class= "butoane" onclick="sterge()">DELETE</button>
+                </td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-12">
+              <div class = "row">
+                <div class="col-md-2"></div>
+                <div class = "col-md-2 centru Text_Int">
+                  <label for="start-id">START</label>
+                  <input class = "custom_imp" id="start-id" type="text" value="1">
+                </div>
+                <div class = "col-md-2 centru Text_Int">
+                  <label for="end-id">FINISH</label>
+                  <input class = "custom_imp" id="end-id" type="text" value="3">
+                </div>
+                <div class = "col-md-2 centru">
+                  <button class = "butoane" id="start-path" onclick="SHORTESTPATH(nodes, edges);">Calculează!</button>
+                </div>
+                <div class="col-md-2"></div>
+              </div>
+            </div>
+          </div>
+        <table class="view">
+            <colgroup>
+                <col width="25%">
+                <col width="25%">
+                <col width="50%">
+            </colgroup>
+            <tr>
+                <td  style="display: none;">
+                    <h2>Nodes</h2>
+                    <pre id="nodes"></pre>
+                </td>
+
+                <td  style="display: none;">
+                    <h2>Edges</h2>
+                    <pre id="edges"></pre>
+                </td>
+
+                <td>
+                    <div id="network"></div>
+                </td>
+            </tr>
+        </table>
+        <p class = "Text_Int centru" id="rez"></p>
+        </div>
+        <div class="col-md-2 ">
+        </div>
+    </div>
+
+    <!-- FOOTER-->
+    <div class="row footer Gri1 TextGri fonttext ">
+      <div class="Gri1 mijloc col-md-12">
+        <p class=" Gri1 text_footer">
+          &#169; Copyright Petru-Gabriel Vamanu
+          <span></span>
+        </p>
+      </div>
+    </div>
+
+  <!-- Modal NOD-->
+<div class="modal fade bd-example-modal-sm" id="add_nod" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adauga nod</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td><label for="node-id">Id</label></td>
+                            <td><input id="node-id" type="text" value="6"></td>
+                        </tr>
+                        <tr style="display: none;">
+                            <td><label for="node-label">Label</label></td>
+                            <td><input id="node-label" type="text" value="Node 6"></td>
+                        </tr>
+                    </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="butoane" style = "background-color :  #A4A5A6;" data-dismiss="modal">Close</button>
+          <button class = "butoane" id="node-add" onclick="addNode();"  data-dismiss="modal">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal MUCHIE-->
+  <div class="modal fade bd-example-modal-sm" id="add_edge" tabindex="-1" role="dialog" aria-labelledby="add_edge" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Adauga muchie</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr style="display: none;">
+                <td></td>
+                <td><label for="edge-id">Id</label></td>
+                <td><input id="edge-id" type="text" value="5"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="edge-from">From</label></td>
+                <td><input id="edge-from" type="text" value="3"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><label for="edge-to">To</label></td>
+                <td><input id="edge-to" type="text" value="4"></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><label for="edge-weight">Weight
+              </label></td>
+              <td><input id="edge-weight" type="text" value="4"></td>
+          </tr>
+        </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="butoane" style = "background-color :  #A4A5A6;" data-dismiss="modal">Close</button>
+          <button class = "butoane" id="edge-add"  data-dismiss="modal" onclick="addEdge();">Add</button>
+          <!--
+            <button class = "butoane" id="edge-update"  data-dismiss="modal" onclick="updateEdge();">Update</button>
+          -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Modal Info-->
+  <div class="modal fade bd-example-modal-sm" id="info" tabindex="-1" role="dialog" aria-labelledby="info" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Info</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+         <h4>
+           Vizualizare algoritmul lui Dijkstra
+          </h4>
+          <div>
+            Metodă de utilizare:
+            <ul>
+              <li>
+                Nodurile se pot muta cu o comandă de tip drag & drop.
+              </li>
+
+              <li>
+                Se poate folosi scroll pentru a mări reprezentarea grafică (Sau gestul de mărire pentru mobil).
+              </li>
+
+
+              <li>
+                Butoanele de adăugare noduri și muchii se folosesc pentru a adăuga noi elemente grafice. <br>
+                Pentru muchie nu se acceptă muchii de cost negativ pentru a se evita cazul ciclurilor negative pe care acest algoritm nu îl poate rezolva.
+              </li>
+
+
+              <li>
+                Pentru a șterge un element, acesta se selectează cu ajutorul unui click pe reprezentarea grafică.
+                <br>
+                Elementul selectat (muchia sau nodul cu muchiile aferente) se va șterge prin apăsarea butonului <var>DELETE</var> și prin confirmarea ștergerii.
+              </li>
+
+              <li>
+                Pentru a vizualza drumul minim se completează <var>START</var> și <var>FINISH</var> cu 2 noduri existente și se apasă <var>Calculează</var>.
+                <br> În cazul lipsei unui nod completat algoritmul nu va avea niciun efect.
+              </li>
+
+
+            </ul>
+          </div>
+
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="butoane" style = "background-color :  #A4A5A6;" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

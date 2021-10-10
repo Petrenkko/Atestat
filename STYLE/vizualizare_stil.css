@@ -1,0 +1,57 @@
+h1 {
+    font-size: 150%;
+    margin: 5px 0;
+}
+
+h2 {
+    font-size: 100%;
+    margin: 5px 0;
+}
+
+table.view {
+    width: 100%;
+}
+
+table td {
+    vertical-align: top;
+}
+
+table table {
+    background-color: #282828;
+    border: 1px solid #282828;
+}
+
+table table td {
+    vertical-align: middle;
+}
+
+input[type=text], pre {
+    border: 1px solid #282828;
+}
+
+pre {
+    margin: 0;
+    padding: 5px;
+    font-size: 10pt;
+}
+
+#network {
+    width: 100%;
+    height: 400px;
+    border: 1px solid #282828;
+}
+.butoane
+{
+    background-color: #519c38; 
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 20px;
+}
+.vis-configuration-wrapper{
+    display: none !important;
+}
